@@ -4,14 +4,27 @@ import time
 data = json.load(open("data.json"))
 
 
-def search(word):
-    return data[word]
+def search(w):
+    if data.get(w.lower()):
+        return data[w.lower()]
+    else:
+        return ["Sorry :( No word found. Please check."]
 
 
 print("Starting ...")
 time.sleep(2)
+print(" *** Type -1 to leave ***")
 
-results = search(input("Enter a word: "))
+word = ""
+while True:
+    word = input("Enter a word: ")
 
-for meaning in results:
-    print(meaning)
+    if word == "-1":
+        print("Closing ... ")
+        time.sleep(1)
+        break
+
+    results = search(word)
+
+    for meaning in results:
+        print(meaning)
