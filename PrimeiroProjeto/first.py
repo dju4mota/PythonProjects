@@ -1,1 +1,3 @@
-input("Enter a word: ")
+word = input("Enter a word: ")
+print(word)
+
