@@ -1,14 +1,22 @@
 import json
 import time
+import difflib
 
 data = json.load(open("data.json"))
 
 
+def closest_word(w):
+    return difflib.get_close_matches(w, data.keys(), 2, 0.8)
+
+
 def search(w):
+
     if data.get(w.lower()):
         return data[w.lower()]
-    else:
-        return ["Sorry :( No word found. Please check."]
+    elif len(closest_word(w)) > 0:
+        if input(f"Did you mean in {closest_word(w)[0]} instead ? [y] or [n]") == "y":
+            return data[closest_word(w)[0].lower()]
+    return [f"Sorry :( No word found."]
 
 
 print("Starting ...")
@@ -17,7 +25,7 @@ print(" *** Type -1 to leave ***")
 
 word = ""
 while True:
-    word = input("Enter a word: ")
+    word = input("\nEnter a word: ")
 
     if word == "-1":
         print("Closing ... ")
