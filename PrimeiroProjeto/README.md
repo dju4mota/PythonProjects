@@ -1,2 +1,2 @@
-# Dictionaire
-First project, a simple dictionaire
+# dictionary
+First project, a simple dictionary
