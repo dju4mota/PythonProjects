@@ -14,9 +14,9 @@ def search(w):
     if data.get(w.lower()):
         return data[w.lower()]
     elif len(closest_word(w)) > 0:
-        if input(f"Did you mean in {closest_word(w)[0]} instead ? [y] or [n]") == "y":
+        if input(f"Did you mean in {closest_word(w)[0]} instead ? Enter y or n: ") == "y":
             return data[closest_word(w)[0].lower()]
-    return [f"Sorry :( No word found."]
+    return [f":( Sorry. No word found. Please double check it"]
 
 
 print("Starting ...")
